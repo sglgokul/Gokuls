@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gokul S — Technology Lead</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #070d1a;
+      --surface: #0d1b2e;
+      --card: #0f2139;
+      --border: #1a3a5c;
+      --accent: #00c8ff;
+      --accent2: #00ff9d;
+      --accent3: #ff6b35;
+      --text: #cde3f5;
+      --muted: #6a8fa8;
+      --mono: 'Share Tech Mono', monospace;
+      --sans: 'Exo 2', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    /* ── GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(7,13,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 6rem 2rem 2rem;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,200,255,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      padding: 0.3rem 1rem;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 0.6s ease both;
+    }
+
+    .hero-name {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -1px;
+      animation: fadeInUp 0.7s ease 0.1s both;
+    }
+
+    .hero-name span { color: var(--accent); }
+
+    .hero-title {
+      font-family: var(--mono);
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--muted);
+      letter-spacing: 3px;
+      margin: 1rem 0 2rem;
+      animation: fadeInUp 0.7s ease 0.2s both;
+    }
+
+    .hero-desc {
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+      animation: fadeInUp 0.7s ease 0.3s both;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 0.7s ease 0.4s both;
+    }
+
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 2px;
+      margin-top: 0.3rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.7s ease 0.5s both;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 0.75rem 2rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 700;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.75rem 2rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ── SECTION BASE ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 3rem;
+      line-height: 1.1;
+    }
+
+    .section-title span { color: var(--accent); }
+
+    hr.section-rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 auto;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p strong { color: var(--text); font-weight: 600; }
+
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .info-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .info-list .label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      min-width: 80px;
+    }
+    .info-list .value { color: var(--text); }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-card:hover::before { opacity: 1; }
+
+    .skill-card-title {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .tag:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    /* ── EXPERIENCE ── */
+    .timeline { position: relative; padding-left: 2rem; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--border), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.4rem;
+      width: 10px; height: 10px;
+      border: 2px solid var(--accent);
+      background: var(--bg);
+      transform: rotate(45deg);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .job-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .job-date {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      background: rgba(0,200,255,0.08);
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(0,200,255,0.2);
+    }
+
+    .job-company {
+      font-size: 0.85rem;
+      color: var(--accent2);
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .job-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .job-bullets li {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      padding-left: 1rem;
+      position: relative;
+      font-weight: 300;
+    }
+
+    .job-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── ACHIEVEMENTS ── */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .achievement-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+
+    .achievement-card:hover { border-color: var(--accent3); }
+
+    .ach-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .ach-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .cert-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .cert-item:hover { border-color: var(--accent2); }
+
+    .cert-dot {
+      width: 6px; height: 6px;
+      background: var(--accent2);
+      flex-shrink: 0;
+      transform: rotate(45deg);
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      transition: border-color 0.2s;
+      text-decoration: none;
+    }
+
+    .contact-item:hover { border-color: var(--accent); }
+
+    .contact-icon { font-size: 1.2rem; }
+
+    .contact-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .contact-message {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .contact-message p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .cursor::after {
+      content: '|';
+      color: var(--accent);
+      animation: blink 1s infinite;
+      margin-left: 2px;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">GS://</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge">TECHNOLOGY LEAD · INFOSYS</div>
+      <h1 class="hero-name">GOKUL <span>S</span></h1>
+      <p class="hero-title cursor">Windows &amp; VMware Administrator · Cloud &amp; Infrastructure</p>
+      <p class="hero-desc">
+        Results-driven Technology Lead with <strong>6+ years</strong> of experience managing enterprise IT infrastructure across on-premises, hybrid, and cloud environments. Specializing in Windows Server, VMware, and Microsoft Azure.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Years Exp.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">15%</div>
+          <div class="stat-label">Cost Reduction</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">&lt;12%</div>
+          <div class="stat-label">Vulnerability Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">APAC Sites</div>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Get In Touch</a>
+        <a href="#experience" class="btn-outline">View Experience</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-rule" style="max-width:1100px;"/>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">// 01. ABOUT</div>
+    <h2 class="section-title">Who I <span>Am</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am a <strong>Technology Lead</strong> at Infosys Ltd., Bengaluru, with deep expertise in enterprise IT infrastructure management. My work spans across <strong>Windows Server administration, VMware virtualization, Microsoft Azure cloud</strong>, and automation using PowerShell and Ansible.</p>
+        <p>I thrive in complex, multi-site environments — managing on-premise, hybrid, and cloud workloads simultaneously. From configuring vCenter clusters and AD Group Policies to reducing server vulnerabilities and automating patch pipelines, I focus on <strong>reliability, security, and operational excellence</strong>.</p>
+        <p>I have served as a Field Service Engineer across <strong>four major APAC locations</strong> and am recognized for vendor management, SOP documentation, and delivering projects within agreed timelines.</p>
+      </div>
+      <ul class="info-list">
+        <li><span class="label">NAME</span><span class="value">Gokul S</span></li>
+        <li><span class="label">ROLE</span><span class="value">Technology Lead</span></li>
+        <li><span class="label">COMPANY</span><span class="value">Infosys Ltd.</span></li>
+        <li><span class="label">LOCATION</span><span class="value">Bengaluru, India</span></li>
+        <li><span class="label">EMAIL</span><span class="value">sglgokul@yahoo.com</span></li>
+        <li><span class="label">PHONE</span><span class="value">+91-7904304139</span></li>
+        <li><span class="label">DEGREE</span><span class="value">B.E. – Electrical &amp; Electronics</span></li>
+        <li><span class="label">LANGUAGES</span><span class="value">English (B1) · Tamil (Native)</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="section-rule" style="max-width:1100px;"/>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">// 02. SKILLS</div>
+    <h2 class="section-title">Technical <span>Arsenal</span></h2>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-card-title">▸ WINDOWS SERVER</div>
+        <div class="skill-tags">
+          <span class="tag">Server 2012–2025</span>
+          <span class="tag">Active Directory</span>
+          <span class="tag">DNS / DHCP</span>
+          <span class="tag">Group Policy</span>
+          <span class="tag">IIS</span>
+          <span class="tag">DFS</span>
+          <span class="tag">RDS</span>
+          <span class="tag">Failover Clustering</span>
+          <span class="tag">LAPS</span>
+          <span class="tag">AD Sites &amp; Services</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">▸ VMWARE VIRTUALIZATION</div>
+        <div class="skill-tags">
+          <span class="tag">vCenter / vSphere</span>
+          <span class="tag">VCF</span>
+          <span class="tag">vROps</span>
+          <span class="tag">vMotion</span>
+          <span class="tag">HA / DRS</span>
+          <span class="tag">vSAN</span>
+          <span class="tag">VM Encryption</span>
+          <span class="tag">Snapshots</span>
+          <span class="tag">VMFS</span>
+          <span class="tag">SSO</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">▸ MICROSOFT AZURE</div>
+        <div class="skill-tags">
+          <span class="tag">VM Deployments</span>
+          <span class="tag">Azure Arc</span>
+          <span class="tag">Azure Backup</span>
+          <span class="tag">Azure Monitor</span>
+          <span class="tag">HotPatch</span>
+          <span class="tag">PIM</span>
+          <span class="tag">Cost Management</span>
+          <span class="tag">Disk Encryption</span>
+          <span class="tag">Subscriptions</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">▸ AUTOMATION &amp; SCRIPTING</div>
+        <div class="skill-tags">
+          <span class="tag">PowerShell</span>
+          <span class="tag">PowerCLI</span>
+          <span class="tag">Ansible</span>
+          <span class="tag">Server Provisioning</span>
+          <span class="tag">Patch Automation</span>
+          <span class="tag">Snapshot Scripts</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">▸ MONITORING &amp; ITSM</div>
+        <div class="skill-tags">
+          <span class="tag">ServiceNow (SNOW)</span>
+          <span class="tag">ITOM</span>
+          <span class="tag">Zabbix</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Telegraf</span>
+          <span class="tag">Azure Insights</span>
+          <span class="tag">ITIL v4</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">▸ SECURITY &amp; PATCH MGMT</div>
+        <div class="skill-tags">
+          <span class="tag">Qualys</span>
+          <span class="tag">Trellix (McAfee)</span>
+          <span class="tag">Windows Defender</span>
+          <span class="tag">SCCM</span>
+          <span class="tag">WSUS</span>
+          <span class="tag">BitLocker</span>
+          <span class="tag">Veeam Backup</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">▸ NETWORKING &amp; HARDWARE</div>
+        <div class="skill-tags">
+          <span class="tag">SonicWall Firewalls</span>
+          <span class="tag">Routing &amp; Switching</span>
+          <span class="tag">TCP/IP</span>
+          <span class="tag">HP iLO</span>
+          <span class="tag">Dell iDRAC</span>
+          <span class="tag">Cisco UCS</span>
+          <span class="tag">CAT5E/CAT6</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">▸ CLOUD &amp; OTHER</div>
+        <div class="skill-tags">
+          <span class="tag">AWS EC2 / S3</span>
+          <span class="tag">Hyper-V</span>
+          <span class="tag">VMware Horizon</span>
+          <span class="tag">ManageEngine</span>
+          <span class="tag">Desktop Central</span>
+          <span class="tag">Google Workspace</span>
+          <span class="tag">Zimbra</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-rule" style="max-width:1100px;"/>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">// 03. EXPERIENCE</div>
+    <h2 class="section-title">Work <span>History</span></h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Technology Lead</div>
+          <div class="job-date">JAN 2026 – PRESENT</div>
+        </div>
+        <div class="job-company">Infosys Ltd. · Bengaluru, India</div>
+        <ul class="job-bullets">
+          <li>Leading IT infrastructure operations across on-premises, hybrid, and cloud environments</li>
+          <li>Overseeing Windows Server, VMware VCF, and Microsoft Azure administration at enterprise scale</li>
+          <li>Driving automation initiatives using PowerShell, PowerCLI, and Ansible to improve operational efficiency</li>
+          <li>Managing PI planning, vendor relationships, and cross-functional project delivery</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Technology Analyst</div>
+          <div class="job-date">MAY 2022 – DEC 2025</div>
+        </div>
+        <div class="job-company">Infosys Ltd. · Bengaluru, India</div>
+        <ul class="job-bullets">
+          <li>Installed, configured, and troubleshot virtual and physical Windows Servers (2012–2022)</li>
+          <li>Managed VMware environments: vCenter, vSphere, vROps, and VCF — support and maintenance</li>
+          <li>Administered Azure environments including server installs, backups, snapshots, PIM, alerts, and cost management</li>
+          <li>Configured Active Directory, GPO, DNS, IIS, Failover Cluster, and RSAT across Windows Server</li>
+          <li>Performed server patching via SCCM, WSUS, and PowerShell scripting; reduced vulnerability count below 12%</li>
+          <li>Contributed to Ansible automation for provisioning, patching, and snapshot workflows</li>
+          <li>Created SOPs, KB articles, monthly capacity planning reports, and customer presentations</li>
+          <li>Served as Field Service Engineer for four major APAC sites</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Executive IT Support</div>
+          <div class="job-date">JAN 2020 – MAY 2022</div>
+        </div>
+        <div class="job-company">Inspace Technologies Pvt. Ltd. · Chennai, India</div>
+        <ul class="job-bullets">
+          <li>Installed, configured, and administered routers, switches, and SonicWall firewalls</li>
+          <li>Managed Windows, Windows Server, Linux, and macOS systems across the organization</li>
+          <li>Configured email clients including Outlook, Zimbra, and Google Workspace</li>
+          <li>Handled server, desktop, laptop, and email backups with disaster recovery procedures</li>
+          <li>Deployed BitLocker encryption for data protection; conducted antivirus management via McAfee ePO</li>
+          <li>Performed patch updates via WSUS and ManageEngine; managed asset audits via Desktop Central</li>
+          <li>Installed and maintained network cabling with UTP CAT5E and CAT6 standards</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-rule" style="max-width:1100px;"/>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="section-label">// 04. ACHIEVEMENTS</div>
+    <h2 class="section-title">Key <span>Wins</span></h2>
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-text">Received Certificate of Appreciation for reducing Windows Server vulnerability count to below 12% — a significant security milestone recognized across the organization.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="ach-icon">🌏</div>
+        <div class="ach-text">Received appreciation award for managing and supporting four APAC sites as Field Service Engineer, ensuring seamless operations across regions.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="ach-icon">⚡</div>
+        <div class="ach-text">Received appreciation award for extended support and contributions during the VCF Code Upgrade Activity — a high-criticality infrastructure project.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="ach-icon">💰</div>
+        <div class="ach-text">Achieved a 15% reduction in hardware repair and replacement costs through proactive maintenance strategies and vendor coordination.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="ach-icon">🔄</div>
+        <div class="ach-text">Automated backup processes using PowerShell and Ansible, significantly saving operational time and improving reliability across managed environments.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="ach-icon">📈</div>
+        <div class="ach-text">Maintained continuous server monitoring ensuring high uptime across all managed environments, minimizing downtime and maximizing service availability.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule" style="max-width:1100px;"/>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-label">// 05. CERTIFICATIONS</div>
+    <h2 class="section-title">Education &amp; <span>Credentials</span></h2>
+
+    <div style="margin-bottom:2.5rem; background:var(--card); border:1px solid var(--border); padding:1.5rem 2rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; align-items:center;">
+      <div>
+        <div style="font-size:1.1rem; font-weight:700; color:var(--text);">Bachelor of Engineering – Electrical &amp; Electronics Engineering</div>
+        <div style="font-size:0.85rem; color:var(--muted); margin-top:0.3rem;">K. Ramakrishnan College of Technology, Trichy, India</div>
+      </div>
+      <div style="font-family:var(--mono); font-size:0.7rem; color:var(--accent); letter-spacing:2px; background:rgba(0,200,255,0.08); padding:0.3rem 0.8rem; border:1px solid rgba(0,200,255,0.2);">2015 – 2019</div>
+    </div>
+
+    <div class="cert-list">
+      <div class="cert-item"><div class="cert-dot"></div>MCSA &amp; MCSE – Course Completed</div>
+      <div class="cert-item"><div class="cert-dot"></div>AWS – Course Completed</div>
+      <div class="cert-item"><div class="cert-dot"></div>Cambridge English B1 (Council of Europe)</div>
+      <div class="cert-item"><div class="cert-dot"></div>Hardware &amp; Networking – Course Completed</div>
+      <div class="cert-item"><div class="cert-dot"></div>IoT – Completed at IIT</div>
+      <div class="cert-item"><div class="cert-dot"></div>Ethical Hacking – Course Completed</div>
+      <div class="cert-item"><div class="cert-dot"></div>🏅 Appreciation – Vulnerability Reduction</div>
+      <div class="cert-item"><div class="cert-dot"></div>🏅 Appreciation – 4 APAC Sites Support</div>
+      <div class="cert-item"><div class="cert-dot"></div>🏅 Appreciation – VCF Code Upgrade</div>
+    </div>
+  </section>
+
+  <hr class="section-rule" style="max-width:1100px;"/>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">// 06. CONTACT</div>
+    <h2 class="section-title">Get In <span>Touch</span></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <a class="contact-item" href="mailto:sglgokul@yahoo.com">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">EMAIL</div>
+            <div class="contact-value">sglgokul@yahoo.com</div>
+          </div>
+        </a>
+        <a class="contact-item" href="tel:+917904304139">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">PHONE</div>
+            <div class="contact-value">+91-7904304139</div>
+          </div>
+        </a>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">LOCATION</div>
+            <div class="contact-value">Bengaluru, India</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div class="contact-label">COMPANY</div>
+            <div class="contact-value">Infosys Ltd.</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-message">
+        <p>I'm open to discussing enterprise IT infrastructure projects, VMware/Azure consulting, automation initiatives, and technology leadership opportunities.</p>
+        <p>Whether you need expertise in Windows Server environments, cloud migrations, or building resilient hybrid infrastructure — feel free to reach out.</p>
+        <a href="mailto:sglgokul@yahoo.com" class="btn-primary" style="display:inline-block;">Send a Message</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 GOKUL S · TECHNOLOGY LEAD · BENGALURU, INDIA</p>
+  </footer>
+
+</body>
+</html>
