@@ -1,939 +1,764 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gokul S — Technology Lead</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  
+  <title>Gokul S | Technology Lead - Windows, VMware & Azure</title>
+  <meta name="description" content="Portfolio of Gokul S, a Technology Lead with 6+ years experience in IT infrastructure, Cloud, and Automation.">
+  <meta property="og:title" content="Gokul S | Technology Lead">
+  <meta property="og:description" content="Windows, VMware & Azure Administrator Portfolio">
+  <meta property="og:image" content="https://sglgokul.github.io/Gokuls/profile-preview.jpg">
+  <meta property="og:url" content="https://sglgokul.github.io/Gokuls/">
+  
   <style>
     :root {
       --bg: #070d1a;
-      --surface: #0d1b2e;
-      --card: #0f2139;
-      --border: #1a3a5c;
+      --surface: rgba(13, 27, 46, 0.6);
+      --card: rgba(15, 33, 57, 0.6);
+      --border: rgba(26, 58, 92, 0.5);
       --accent: #00c8ff;
       --accent2: #00ff9d;
       --accent3: #ff6b35;
-      --text: #cde3f5;
-      --muted: #6a8fa8;
-      --mono: 'Share Tech Mono', monospace;
-      --sans: 'Exo 2', sans-serif;
+      --text: #ffffff;
+      --muted: #8ea8be;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    * { margin:0; padding:0; box-sizing:border-box; }
+    
+    html { 
+      scroll-behavior: smooth; 
+      /* Fixes the "drag/scroll" issue where sections hide under the top nav */
+      scroll-padding-top: 100px; 
+    }
+    
+    body { 
+      background:var(--bg); 
+      color:var(--text); 
+      font-family:var(--sans); 
+      overflow-x:hidden; 
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    #bg-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      overflow-x: hidden;
+    /* Glassmorphism Reusable Class */
+    .glass-panel {
+      background: rgba(15, 33, 57, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
-    /* ── GRID BACKGROUND ── */
-    body::before {
-      content: '';
+    /* Floating Pill Navigation (iOS Glass Style) */
+    #nav-wrapper {
       position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(0,200,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,200,255,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(7,13,26,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      height: 60px;
-    }
-
-    .nav-logo {
-      font-family: var(--mono);
-      color: var(--accent);
-      font-size: 1rem;
-      letter-spacing: 2px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--accent); }
-
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 6rem 2rem 2rem;
-    }
-
-    .hero-glow {
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,200,255,0.08) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--accent2);
-      border: 1px solid var(--accent2);
-      padding: 0.3rem 1rem;
-      letter-spacing: 3px;
-      margin-bottom: 1.5rem;
-      animation: fadeInDown 0.6s ease both;
-    }
-
-    .hero-name {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -1px;
-      animation: fadeInUp 0.7s ease 0.1s both;
-    }
-
-    .hero-name span { color: var(--accent); }
-
-    .hero-title {
-      font-family: var(--mono);
-      font-size: clamp(0.85rem, 2vw, 1rem);
-      color: var(--muted);
-      letter-spacing: 3px;
-      margin: 1rem 0 2rem;
-      animation: fadeInUp 0.7s ease 0.2s both;
-    }
-
-    .hero-desc {
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-      font-weight: 300;
-      animation: fadeInUp 0.7s ease 0.3s both;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-bottom: 2.5rem;
-      animation: fadeInUp 0.7s ease 0.4s both;
-    }
-
-    .stat { text-align: center; }
-    .stat-num {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--accent);
-      line-height: 1;
-    }
-    .stat-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 2px;
-      margin-top: 0.3rem;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeInUp 0.7s ease 0.5s both;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: var(--bg);
-      padding: 0.75rem 2rem;
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      font-weight: 700;
-      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
-
-    .btn-outline {
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.75rem 2rem;
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-      transition: border-color 0.2s, color 0.2s, transform 0.2s;
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-
-    /* ── SECTION BASE ── */
-    section {
-      position: relative;
-      z-index: 1;
-      padding: 5rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 800;
-      margin-bottom: 3rem;
-      line-height: 1.1;
-    }
-
-    .section-title span { color: var(--accent); }
-
-    hr.section-rule {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0 auto;
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      line-height: 1.9;
-      font-weight: 300;
-      margin-bottom: 1rem;
-    }
-
-    .about-text p strong { color: var(--text); font-weight: 600; }
-
-    .info-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
-    .info-list li {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-    }
-    .info-list .label {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 1px;
-      min-width: 80px;
-    }
-    .info-list .value { color: var(--text); }
-
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .skill-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--accent);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
-    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-    .skill-card:hover::before { opacity: 1; }
-
-    .skill-card-title {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--accent);
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      padding: 0.25rem 0.6rem;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      letter-spacing: 0.5px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .tag:hover { border-color: var(--accent2); color: var(--accent2); }
-
-    /* ── EXPERIENCE ── */
-    .timeline { position: relative; padding-left: 2rem; }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent), var(--border), transparent);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 3rem;
-      padding-left: 1.5rem;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2rem;
-      top: 0.4rem;
-      width: 10px; height: 10px;
-      border: 2px solid var(--accent);
-      background: var(--bg);
-      transform: rotate(45deg);
-    }
-
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .job-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .job-date {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 1px;
-      background: rgba(0,200,255,0.08);
-      padding: 0.2rem 0.6rem;
-      border: 1px solid rgba(0,200,255,0.2);
-    }
-
-    .job-company {
-      font-size: 0.85rem;
-      color: var(--accent2);
-      margin-bottom: 0.8rem;
-      font-weight: 600;
-    }
-
-    .job-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .job-bullets li {
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.6;
-      padding-left: 1rem;
-      position: relative;
-      font-weight: 300;
-    }
-
-    .job-bullets li::before {
-      content: '›';
-      position: absolute;
+      top: 25px;
       left: 0;
-      color: var(--accent);
-      font-weight: 700;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 999; /* Elevated to ensure it is always clickable */
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    #navbar {
+      pointer-events: auto;
+      background: rgba(20, 35, 60, 0.4);
+      backdrop-filter: blur(24px) saturate(200%);
+      -webkit-backdrop-filter: blur(24px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      padding: 0.6rem 1.5rem 0.6rem 2rem;
+      gap: 2.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      max-width: 95vw;
     }
 
-    /* ── ACHIEVEMENTS ── */
-    .achievements-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    #navbar.scrolled {
+      background: rgba(20, 35, 60, 0.65);
+      padding: 0.5rem 1.2rem 0.5rem 1.8rem;
+      gap: 2rem;
+    }
+    
+    .nav-logo { font-family:var(--mono); color:var(--accent); font-size:1.1rem; letter-spacing:2px; flex-shrink:0; font-weight: bold; cursor: pointer;}
+    
+    .nav-links { 
+      display:flex; 
+      gap:1.8rem; 
+      list-style:none; 
+      align-items:center; 
+      margin: 0; 
+      padding: 0;
+    }
+    
+    .nav-links a { 
+      color: #b0c4d8; 
+      text-decoration:none; 
+      font-size:0.8rem; 
+      font-weight:500; 
+      letter-spacing:1px; 
+      transition: all 0.3s ease; 
+      white-space:nowrap; 
+      padding: 0.5rem 0.8rem;
+      border-radius: 20px;
+      user-select: none; /* Prevents text highlighting when dragging/clicking */
+      -webkit-user-drag: none;
+    }
+    
+    @media (hover: hover) {
+      .nav-links a:hover { 
+        color: var(--text); 
+        background: rgba(255, 255, 255, 0.08); 
+      }
+    }
+    .nav-links a:active { transform: scale(0.9); background: rgba(255, 255, 255, 0.15); }
+
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:50%; z-index: 101; transition: all 0.3s;}
+    .hamburger span { display:block; width:20px; height:2px; background:var(--text); transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 2px;}
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .hamburger:active { transform: scale(0.9); }
+
+    .mobile-menu { 
+      display:flex; position:fixed; top:0; left:0; right:0; height: 100vh;
+      background:rgba(7,13,26,0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+      z-index:998; flex-direction:column; justify-content: center; align-items: center; gap: 2rem;
+      opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: auto; }
+    .mobile-menu a { 
+      color:var(--text); text-decoration:none; font-size:1.4rem; font-weight:600; 
+      letter-spacing:1px; transition:all 0.2s; 
+    }
+    .mobile-menu a:active { transform: scale(0.95); color: var(--accent); }
+
+    /* HERO */
+    #hero { min-height:100vh; display:flex; align-items:center; justify-content:center; position:relative; padding:8rem 1.5rem 3rem; z-index:1; }
+    .hero-content { text-align:center; position:relative; z-index:1; width:100%; max-width:800px; }
+    .hero-badge { 
+      display:inline-block; font-family:var(--mono); font-size:0.72rem; color:var(--accent2); 
+      border:1px solid rgba(0,255,157,0.3); background: rgba(0,255,157,0.05);
+      padding:0.4rem 1.2rem; letter-spacing:3px; margin-bottom:1.5rem; border-radius: 50px;
+      animation:fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; 
+    }
+    .hero-name { font-size:clamp(3rem,10vw,6.5rem); font-weight:800; line-height:1; letter-spacing:-2px; animation:fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+    .hero-name span { color:var(--accent); }
+    .hero-title { font-family:var(--mono); font-size:clamp(0.75rem,2.2vw,1rem); color:var(--muted); letter-spacing:3px; margin:1rem 0 2rem; animation:fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both; padding:0 1rem; }
+    .hero-desc { max-width:650px; margin:0 auto 2.5rem; font-size:clamp(0.95rem,2vw,1.1rem); color:var(--muted); line-height:1.8; font-weight:300; animation:fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; padding:0 0.5rem; }
+    .hero-desc strong { color:var(--text); font-weight: 500;}
+    .hero-stats { display:flex; justify-content:center; gap:clamp(1.5rem,5vw,4rem); margin-bottom:3rem; animation:fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both; flex-wrap:wrap; }
+    .stat { text-align:center; }
+    .stat-num { font-size:clamp(1.8rem,4vw,2.5rem); font-weight:700; color:var(--text); line-height:1; }
+    .stat-label { font-family:var(--mono); font-size:0.65rem; color:var(--accent); letter-spacing:1.5px; margin-top:0.5rem; text-transform: uppercase;}
+    .hero-cta { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; animation:fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both; }
+
+    /* CAPSULE BUTTONS - iOS Style */
+    .btn-primary, .btn-outline {
+      display:inline-flex; align-items:center; justify-content: center; gap:0.5rem;
+      padding:0.9rem 2.2rem; font-family:var(--sans); font-size:0.85rem;
+      letter-spacing:1px; text-transform:uppercase; text-decoration:none;
+      font-weight:600; transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1); cursor:pointer; 
+      border:none; border-radius: 50px; outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-primary { background:var(--accent); color:#000; box-shadow: 0 4px 14px 0 rgba(0, 200, 255, 0.39); }
+    
+    @media (hover: hover) {
+      .btn-primary:hover { transform:translateY(-2px); box-shadow: 0 8px 24px rgba(0, 200, 255, 0.5); }
+      .btn-outline:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); transform:translateY(-2px); }
+    }
+    
+    .btn-primary:active { transform: scale(0.92); box-shadow: 0 2px 8px rgba(0, 200, 255, 0.3); }
+
+    .btn-outline { 
+      border: 1px solid rgba(255,255,255,0.15); color:var(--text); 
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    }
+    .btn-outline:active { transform: scale(0.92); background: rgba(255,255,255,0.15);}
+
+    /* Scroll Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px) scale(0.98);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* SECTIONS */
+    section { position:relative; z-index:1; padding:6rem 1.5rem; max-width:1100px; margin:0 auto; }
+    .section-label { font-family:var(--mono); font-size:0.7rem; color:var(--accent); letter-spacing:4px; text-transform:uppercase; margin-bottom:1rem; }
+    .section-title { font-size:clamp(2rem,4vw,3rem); font-weight:800; margin-bottom:3.5rem; line-height:1.1; letter-spacing: -1px;}
+    .section-title span { color:var(--accent); }
+    hr.section-rule { border:none; border-top:1px solid rgba(255,255,255,0.05); margin:0 auto; max-width: 1100px;}
+
+    /* ABOUT */
+    .about-text p { color:var(--muted); line-height:1.9; font-weight:300; margin-bottom:1.2rem; font-size:clamp(0.95rem,2vw,1.05rem); }
+    .about-text p strong { color:var(--text); font-weight:500; }
+
+    /* SKILLS */
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; }
+    .skill-card { 
+      background: rgba(15, 33, 57, 0.3); border:1px solid rgba(255,255,255,0.05); padding:1.5rem; 
+      border-radius: 20px; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      transition:all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+      position:relative; overflow:hidden; 
+    }
+    @media (hover: hover) {
+      .skill-card:hover { border-color:rgba(0,200,255,0.4); transform:translateY(-8px); box-shadow: 0 15px 35px -10px rgba(0,0,0,0.6); background: rgba(20, 45, 80, 0.4);}
+      .tag:hover { border-color:var(--accent2); color:var(--accent2); background: rgba(0,255,157,0.05); transform: scale(1.05);}
+    }
+    .skill-card-title { font-family:var(--mono); font-size:0.75rem; color:var(--accent); letter-spacing:2px; margin-bottom:1.2rem; font-weight: bold;}
+    .skill-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .tag { 
+      font-family:var(--sans); font-size:0.75rem; padding:0.4rem 0.8rem; 
+      border:1px solid rgba(255,255,255,0.08); color:var(--muted); border-radius: 50px;
+      transition:all 0.2s; background: rgba(255,255,255,0.03); cursor: default;
+    }
+
+    /* TIMELINE */
+    .timeline { position:relative; padding-left:2rem; }
+    .timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,var(--accent),var(--border),transparent); }
+    .timeline-item { position:relative; margin-bottom:3.5rem; padding-left:1.5rem; }
+    .timeline-item::before { 
+      content:''; position:absolute; left:-1.8rem; top:0.4rem; width:12px; height:12px; 
+      border:2px solid var(--accent); background:var(--bg); border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,200,255,0.5);
+    }
+    .job-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem; }
+    .job-title { font-size:1.2rem; font-weight:700; color:var(--text); letter-spacing: -0.5px;}
+    .job-date { font-family:var(--mono); font-size:0.7rem; color:var(--accent); letter-spacing:1px; background:rgba(0,200,255,0.08); padding:0.3rem 0.8rem; border-radius: 50px; white-space:nowrap; }
+    .job-company { font-size:0.9rem; color:var(--accent2); margin-bottom:1rem; font-weight:500; }
+    .job-bullets { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+    .job-bullets li { color:var(--muted); font-size:0.95rem; line-height:1.6; padding-left:1.2rem; position:relative; font-weight:300; }
+    .job-bullets li::before { content:'→'; position:absolute; left:0; color:var(--accent); font-weight:700; font-family: var(--mono);}
+
+    /* ACHIEVEMENTS */
+    .achievements-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; }
+    .achievement-card { 
+      background: rgba(15, 33, 57, 0.3); border:1px solid rgba(255,255,255,0.05); padding:1.5rem; display:flex; gap:1.2rem; align-items:flex-start; 
+      border-radius: 20px; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition:all 0.4s ease; 
+    }
+    @media (hover: hover) {
+      .achievement-card:hover { border-color:var(--accent3); transform: translateY(-5px); box-shadow: 0 12px 25px -10px rgba(255,107,53,0.3);}
+    }
+    .ach-icon { font-size:1.6rem; flex-shrink:0; background: rgba(255,255,255,0.05); padding: 0.6rem; border-radius: 50%;}
+    .ach-text { font-size:0.95rem; color:var(--muted); line-height:1.6; font-weight:300; }
+
+    /* CERTIFICATIONS */
+    .cert-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
+    .cert-item { 
+      background: rgba(15, 33, 57, 0.3); border:1px solid rgba(255,255,255,0.05); padding:1rem 1.2rem; display:flex; align-items:center; gap:1rem; 
+      font-size:0.9rem; color:var(--text); border-radius: 12px; backdrop-filter: blur(16px); transition:all 0.3s ease; 
+    }
+    @media (hover: hover) {
+      .cert-item:hover { border-color:var(--accent2); background: rgba(0,255,157,0.05); transform: translateX(5px);}
+    }
+    .cert-dot { width:8px; height:8px; background:var(--accent2); flex-shrink:0; border-radius: 50%; }
+
+    /* REDESIGNED CONTACT (06) */
+    #contact { text-align: center; }
+    .contact-message-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+    }
+    .contact-message-container p {
+      font-size: 1.05rem; 
+      color: var(--muted); 
+      line-height: 1.8; 
+      font-weight: 300; 
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-icon-row {
+      display: flex;
+      justify-content: center;
       gap: 1.5rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
     }
 
-    .achievement-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      transition: border-color 0.2s;
-    }
-
-    .achievement-card:hover { border-color: var(--accent3); }
-
-    .ach-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-    }
-
-    .ach-text {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    /* ── CERTIFICATIONS ── */
-    .cert-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    .cert-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1rem 1.25rem;
+    /* Contact Icons iOS Glass Style */
+    .icon-btn {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      font-size: 0.85rem;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--text);
-      transition: border-color 0.2s;
-    }
-
-    .cert-item:hover { border-color: var(--accent2); }
-
-    .cert-dot {
-      width: 6px; height: 6px;
-      background: var(--accent2);
-      flex-shrink: 0;
-      transform: rotate(45deg);
-    }
-
-    /* ── CONTACT ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 1rem 1.5rem;
-      transition: border-color 0.2s;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
     }
-
-    .contact-item:hover { border-color: var(--accent); }
-
-    .contact-icon { font-size: 1.2rem; }
-
-    .contact-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .icon-btn svg { width: 26px; height: 26px; transition: all 0.3s; }
+    
+    @media (hover: hover) {
+      .icon-btn:hover { 
+        background: rgba(255, 255, 255, 0.1); 
+        transform: translateY(-5px); 
+        border-color: rgba(255,255,255,0.3);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+      }
+      .icon-email:hover { color: var(--accent); border-color: var(--accent); }
+      .icon-phone:hover { color: var(--accent2); border-color: var(--accent2); }
+      .icon-map:hover { color: var(--accent3); border-color: var(--accent3); }
+      .icon-linkedin:hover { color: #0a66c2; border-color: #0a66c2; }
+      .icon-resume:hover { color: #fff; border-color: #fff; }
     }
+    
+    .icon-btn:active { transform: scale(0.9); box-shadow: 0 2px 10px rgba(0,0,0,0.2); background: rgba(255, 255, 255, 0.15);}
 
-    .contact-value {
-      font-size: 0.9rem;
-      color: var(--text);
+    /* FOOTER */
+    footer { text-align:center; padding:3rem 1rem; border-top:1px solid rgba(255,255,255,0.05); font-family:var(--sans); font-size:0.8rem; color:var(--muted); position:relative; z-index:1; }
+    .footer-links { display:flex; justify-content:center; gap:2rem; margin-bottom:1rem; flex-wrap:wrap; font-weight: 500;}
+    .footer-links a { color:var(--muted); text-decoration:none; transition:all 0.2s; }
+    
+    @media (hover: hover) {
+      .footer-links a:hover { color:var(--text); }
     }
+    .footer-links a:active { transform: scale(0.9); display: inline-block; }
 
-    .contact-message {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 2rem;
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      .nav-links { display:none; }
+      #navbar { padding: 0.5rem 1.2rem; justify-content: space-between; width: 90%; max-width: 400px; gap: 0;}
+      .hamburger { display:flex; }
     }
-
-    .contact-message p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.8;
-      font-weight: 300;
-      margin-bottom: 1.5rem;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      border-top: 1px solid var(--border);
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--muted);
-      letter-spacing: 2px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .cursor::after {
-      content: '|';
-      color: var(--accent);
-      animation: blink 1s infinite;
-      margin-left: 2px;
-    }
-
-    /* ── SCROLLBAR ── */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 1.5rem; }
+    @media (max-width:600px) {
+      section { padding:4rem 1.5rem; }
+      .hero-name { font-size:clamp(2.5rem,10vw,4rem); }
+      .hero-stats { gap:1.5rem; }
+      .skills-grid { grid-template-columns:1fr; }
+      .achievements-grid { grid-template-columns:1fr; }
+      .cert-list { grid-template-columns:1fr; }
+      .hero-cta { flex-direction:column; align-items:stretch; }
+      .hero-cta a { width:100%; }
+      .contact-icon-row { gap: 1rem; }
+      .icon-btn { width: 55px; height: 55px; }
+      .icon-btn svg { width: 22px; height: 22px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">GS://</div>
+<canvas id="bg-canvas"></canvas>
+
+<div id="nav-wrapper">
+  <nav id="navbar">
+    <div class="nav-logo" onclick="window.scrollTo(0,0)">GS://</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#certifications">Credentials</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+</div>
 
-  <!-- HERO -->
-  <div id="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-content">
-      <div class="hero-badge">TECHNOLOGY LEAD · INFOSYS</div>
-      <h1 class="hero-name">GOKUL <span>S</span></h1>
-      <p class="hero-title cursor">Windows &amp; VMware Administrator · Cloud &amp; Infrastructure</p>
-      <p class="hero-desc">
-        Results-driven Technology Lead with <strong>6+ years</strong> of experience managing enterprise IT infrastructure across on-premises, hybrid, and cloud environments. Specializing in Windows Server, VMware, and Microsoft Azure.
-      </p>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-num">6+</div>
-          <div class="stat-label">Years Exp.</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">15%</div>
-          <div class="stat-label">Cost Reduction</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">&lt;12%</div>
-          <div class="stat-label">Vulnerability Rate</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">4</div>
-          <div class="stat-label">APAC Sites</div>
-        </div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#achievements" onclick="closeMobile()">Achievements</a>
+  <a href="#certifications" onclick="closeMobile()">Certifications</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<div id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">TECHNOLOGY LEAD · INFOSYS LTD.</div>
+    <h1 class="hero-name">GOKUL <span>S</span></h1>
+    <p class="hero-title">Windows & VMware Administrator · Cloud & Infrastructure</p>
+    <p class="hero-desc">
+      Results-driven Technology Lead with <strong>6+ years</strong> of experience managing enterprise IT infrastructure across on-premises, hybrid, and cloud environments. Specializing in Windows Server, VMware, and Microsoft Azure.
+    </p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Years Exp.</div></div>
+      <div class="stat"><div class="stat-num">15%</div><div class="stat-label">Cost Reduction</div></div>
+      <div class="stat"><div class="stat-num"><12%</div><div class="stat-label">Vuln. Rate</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">APAC Sites</div></div>
+    </div>
+    
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+      <a href="#experience" class="btn-outline">View Experience</a>
+    </div>
+  </div>
+</div>
+
+<hr class="section-rule" />
+
+<section id="about" class="reveal">
+  <div class="section-label">// 01. ABOUT</div>
+  <h2 class="section-title">Who I <span>Am</span></h2>
+  <div class="about-text">
+    <p>I am a <strong>Technology Lead</strong> at Infosys Ltd., Bengaluru, with deep expertise in enterprise IT infrastructure management. My work spans <strong>Windows Server administration, VMware virtualization, Microsoft Azure cloud</strong>, and automation using PowerShell and Ansible.</p>
+    <p>I thrive in complex, multi-site environments — managing on-premise, hybrid, and cloud workloads simultaneously. From configuring vCenter clusters and Active Directory Group Policies to reducing server vulnerabilities and automating patch pipelines, I focus on <strong>reliability, security, and operational excellence</strong>.</p>
+    <p>I have served as a Field Service Engineer across <strong>four major APAC locations</strong> and am recognized for vendor management, SOP documentation, and delivering critical IT projects within agreed timelines. I hold a <strong>Bachelor of Engineering in Electrical & Electronics</strong> from K. Ramakrishnan College of Technology, Trichy.</p>
+  </div>
+</section>
+
+<hr class="section-rule" />
+
+<section id="skills" class="reveal">
+  <div class="section-label">// 02. SKILLS</div>
+  <h2 class="section-title">Technical <span>Arsenal</span></h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title">▸ WINDOWS SERVER</div>
+      <div class="skill-tags">
+        <span class="tag">Server 2012–2025</span><span class="tag">Active Directory</span><span class="tag">DNS / DHCP</span><span class="tag">Group Policy</span><span class="tag">IIS</span><span class="tag">DFS</span><span class="tag">RDS</span><span class="tag">Failover Clustering</span><span class="tag">LAPS</span><span class="tag">AD Sites & Services</span>
       </div>
-      <div class="hero-cta">
-        <a href="#contact" class="btn-primary">Get In Touch</a>
-        <a href="#experience" class="btn-outline">View Experience</a>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">▸ VMWARE VIRTUALIZATION</div>
+      <div class="skill-tags">
+        <span class="tag">vCenter / vSphere</span><span class="tag">VCF</span><span class="tag">vROps</span><span class="tag">vMotion</span><span class="tag">HA / DRS</span><span class="tag">vSAN</span><span class="tag">VM Encryption</span><span class="tag">Snapshots</span><span class="tag">VMFS</span><span class="tag">SSO</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">▸ MICROSOFT AZURE</div>
+      <div class="skill-tags">
+        <span class="tag">VM Deployments</span><span class="tag">Azure Arc</span><span class="tag">Azure Backup</span><span class="tag">Azure Monitor</span><span class="tag">HotPatch</span><span class="tag">PIM</span><span class="tag">Cost Management</span><span class="tag">Disk Encryption</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">▸ AUTOMATION & SCRIPTING</div>
+      <div class="skill-tags">
+        <span class="tag">PowerShell</span><span class="tag">PowerCLI</span><span class="tag">Ansible</span><span class="tag">Server Provisioning</span><span class="tag">Patch Automation</span><span class="tag">Snapshot Scripts</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">▸ MONITORING & ITSM</div>
+      <div class="skill-tags">
+        <span class="tag">ServiceNow (SNOW)</span><span class="tag">ITOM</span><span class="tag">Zabbix</span><span class="tag">Grafana</span><span class="tag">Telegraf</span><span class="tag">Azure Insights</span><span class="tag">ITIL v4</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">▸ SECURITY & PATCH MGMT</div>
+      <div class="skill-tags">
+        <span class="tag">Qualys</span><span class="tag">Trellix (McAfee)</span><span class="tag">Windows Defender</span><span class="tag">SCCM</span><span class="tag">WSUS</span><span class="tag">BitLocker</span><span class="tag">Veeam Backup</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">▸ NETWORKING & HARDWARE</div>
+      <div class="skill-tags">
+        <span class="tag">SonicWall Firewalls</span><span class="tag">Routing & Switching</span><span class="tag">TCP/IP</span><span class="tag">HP iLO</span><span class="tag">Dell iDRAC</span><span class="tag">Cisco UCS</span><span class="tag">CAT5E/CAT6</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">▸ CLOUD & OTHER</div>
+      <div class="skill-tags">
+        <span class="tag">AWS EC2 / S3</span><span class="tag">Hyper-V</span><span class="tag">VMware Horizon</span><span class="tag">ManageEngine</span><span class="tag">Desktop Central</span><span class="tag">Google Workspace</span><span class="tag">Zimbra</span>
       </div>
     </div>
   </div>
+</section>
 
-  <hr class="section-rule" style="max-width:1100px;"/>
+<hr class="section-rule" />
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-label">// 01. ABOUT</div>
-    <h2 class="section-title">Who I <span>Am</span></h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I am a <strong>Technology Lead</strong> at Infosys Ltd., Bengaluru, with deep expertise in enterprise IT infrastructure management. My work spans across <strong>Windows Server administration, VMware virtualization, Microsoft Azure cloud</strong>, and automation using PowerShell and Ansible.</p>
-        <p>I thrive in complex, multi-site environments — managing on-premise, hybrid, and cloud workloads simultaneously. From configuring vCenter clusters and AD Group Policies to reducing server vulnerabilities and automating patch pipelines, I focus on <strong>reliability, security, and operational excellence</strong>.</p>
-        <p>I have served as a Field Service Engineer across <strong>four major APAC locations</strong> and am recognized for vendor management, SOP documentation, and delivering projects within agreed timelines.</p>
+<section id="experience" class="reveal">
+  <div class="section-label">// 03. EXPERIENCE</div>
+  <h2 class="section-title">Work <span>History</span></h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="job-header">
+        <div class="job-title">Technology Lead</div>
+        <div class="job-date">JAN 2026 – PRESENT</div>
       </div>
-      <ul class="info-list">
-        <li><span class="label">NAME</span><span class="value">Gokul S</span></li>
-        <li><span class="label">ROLE</span><span class="value">Technology Lead</span></li>
-        <li><span class="label">COMPANY</span><span class="value">Infosys Ltd.</span></li>
-        <li><span class="label">LOCATION</span><span class="value">Bengaluru, India</span></li>
-        <li><span class="label">EMAIL</span><span class="value">sglgokul@yahoo.com</span></li>
-        <li><span class="label">PHONE</span><span class="value">+91-7904304139</span></li>
-        <li><span class="label">DEGREE</span><span class="value">B.E. – Electrical &amp; Electronics</span></li>
-        <li><span class="label">LANGUAGES</span><span class="value">English (B1) · Tamil (Native)</span></li>
+      <div class="job-company">Infosys Ltd. · Bengaluru, India</div>
+      <ul class="job-bullets">
+        <li>Leading IT infrastructure operations across on-premises, hybrid, and cloud environments</li>
+        <li>Overseeing Windows Server, VMware VCF, and Microsoft Azure administration at enterprise scale</li>
+        <li>Driving automation initiatives using PowerShell, PowerCLI, and Ansible to improve operational efficiency</li>
+        <li>Managing PI planning, vendor relationships, and cross-functional project delivery</li>
       </ul>
     </div>
-  </section>
-
-  <hr class="section-rule" style="max-width:1100px;"/>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-label">// 02. SKILLS</div>
-    <h2 class="section-title">Technical <span>Arsenal</span></h2>
-    <div class="skills-grid">
-
-      <div class="skill-card">
-        <div class="skill-card-title">▸ WINDOWS SERVER</div>
-        <div class="skill-tags">
-          <span class="tag">Server 2012–2025</span>
-          <span class="tag">Active Directory</span>
-          <span class="tag">DNS / DHCP</span>
-          <span class="tag">Group Policy</span>
-          <span class="tag">IIS</span>
-          <span class="tag">DFS</span>
-          <span class="tag">RDS</span>
-          <span class="tag">Failover Clustering</span>
-          <span class="tag">LAPS</span>
-          <span class="tag">AD Sites &amp; Services</span>
-        </div>
+    <div class="timeline-item">
+      <div class="job-header">
+        <div class="job-title">Technology Analyst</div>
+        <div class="job-date">MAY 2022 – DEC 2025</div>
       </div>
-
-      <div class="skill-card">
-        <div class="skill-card-title">▸ VMWARE VIRTUALIZATION</div>
-        <div class="skill-tags">
-          <span class="tag">vCenter / vSphere</span>
-          <span class="tag">VCF</span>
-          <span class="tag">vROps</span>
-          <span class="tag">vMotion</span>
-          <span class="tag">HA / DRS</span>
-          <span class="tag">vSAN</span>
-          <span class="tag">VM Encryption</span>
-          <span class="tag">Snapshots</span>
-          <span class="tag">VMFS</span>
-          <span class="tag">SSO</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-title">▸ MICROSOFT AZURE</div>
-        <div class="skill-tags">
-          <span class="tag">VM Deployments</span>
-          <span class="tag">Azure Arc</span>
-          <span class="tag">Azure Backup</span>
-          <span class="tag">Azure Monitor</span>
-          <span class="tag">HotPatch</span>
-          <span class="tag">PIM</span>
-          <span class="tag">Cost Management</span>
-          <span class="tag">Disk Encryption</span>
-          <span class="tag">Subscriptions</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-title">▸ AUTOMATION &amp; SCRIPTING</div>
-        <div class="skill-tags">
-          <span class="tag">PowerShell</span>
-          <span class="tag">PowerCLI</span>
-          <span class="tag">Ansible</span>
-          <span class="tag">Server Provisioning</span>
-          <span class="tag">Patch Automation</span>
-          <span class="tag">Snapshot Scripts</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-title">▸ MONITORING &amp; ITSM</div>
-        <div class="skill-tags">
-          <span class="tag">ServiceNow (SNOW)</span>
-          <span class="tag">ITOM</span>
-          <span class="tag">Zabbix</span>
-          <span class="tag">Grafana</span>
-          <span class="tag">Telegraf</span>
-          <span class="tag">Azure Insights</span>
-          <span class="tag">ITIL v4</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-title">▸ SECURITY &amp; PATCH MGMT</div>
-        <div class="skill-tags">
-          <span class="tag">Qualys</span>
-          <span class="tag">Trellix (McAfee)</span>
-          <span class="tag">Windows Defender</span>
-          <span class="tag">SCCM</span>
-          <span class="tag">WSUS</span>
-          <span class="tag">BitLocker</span>
-          <span class="tag">Veeam Backup</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-title">▸ NETWORKING &amp; HARDWARE</div>
-        <div class="skill-tags">
-          <span class="tag">SonicWall Firewalls</span>
-          <span class="tag">Routing &amp; Switching</span>
-          <span class="tag">TCP/IP</span>
-          <span class="tag">HP iLO</span>
-          <span class="tag">Dell iDRAC</span>
-          <span class="tag">Cisco UCS</span>
-          <span class="tag">CAT5E/CAT6</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-title">▸ CLOUD &amp; OTHER</div>
-        <div class="skill-tags">
-          <span class="tag">AWS EC2 / S3</span>
-          <span class="tag">Hyper-V</span>
-          <span class="tag">VMware Horizon</span>
-          <span class="tag">ManageEngine</span>
-          <span class="tag">Desktop Central</span>
-          <span class="tag">Google Workspace</span>
-          <span class="tag">Zimbra</span>
-        </div>
-      </div>
-
+      <div class="job-company">Infosys Ltd. · Bengaluru, India</div>
+      <ul class="job-bullets">
+        <li>Installed, configured, and troubleshot virtual and physical Windows Servers (2012–2022)</li>
+        <li>Managed VMware environments: vCenter, vSphere, vROps, and VCF — support and maintenance</li>
+        <li>Administered Azure environments including server installs, backups, snapshots, PIM, alerts, and cost management</li>
+        <li>Configured Active Directory, GPO, DNS, IIS, Failover Cluster, and RSAT across Windows Server</li>
+        <li>Performed server patching via SCCM, WSUS, and PowerShell scripting; reduced vulnerability count below 12%</li>
+        <li>Contributed to Ansible automation for provisioning, patching, and snapshot workflows</li>
+        <li>Created SOPs, KB articles, monthly capacity planning reports, and customer presentations</li>
+        <li>Served as Field Service Engineer for four major APAC sites</li>
+      </ul>
     </div>
-  </section>
-
-  <hr class="section-rule" style="max-width:1100px;"/>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-label">// 03. EXPERIENCE</div>
-    <h2 class="section-title">Work <span>History</span></h2>
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="job-header">
-          <div class="job-title">Technology Lead</div>
-          <div class="job-date">JAN 2026 – PRESENT</div>
-        </div>
-        <div class="job-company">Infosys Ltd. · Bengaluru, India</div>
-        <ul class="job-bullets">
-          <li>Leading IT infrastructure operations across on-premises, hybrid, and cloud environments</li>
-          <li>Overseeing Windows Server, VMware VCF, and Microsoft Azure administration at enterprise scale</li>
-          <li>Driving automation initiatives using PowerShell, PowerCLI, and Ansible to improve operational efficiency</li>
-          <li>Managing PI planning, vendor relationships, and cross-functional project delivery</li>
-        </ul>
+    <div class="timeline-item">
+      <div class="job-header">
+        <div class="job-title">Executive IT Support</div>
+        <div class="job-date">JAN 2020 – MAY 2022</div>
       </div>
-
-      <div class="timeline-item">
-        <div class="job-header">
-          <div class="job-title">Technology Analyst</div>
-          <div class="job-date">MAY 2022 – DEC 2025</div>
-        </div>
-        <div class="job-company">Infosys Ltd. · Bengaluru, India</div>
-        <ul class="job-bullets">
-          <li>Installed, configured, and troubleshot virtual and physical Windows Servers (2012–2022)</li>
-          <li>Managed VMware environments: vCenter, vSphere, vROps, and VCF — support and maintenance</li>
-          <li>Administered Azure environments including server installs, backups, snapshots, PIM, alerts, and cost management</li>
-          <li>Configured Active Directory, GPO, DNS, IIS, Failover Cluster, and RSAT across Windows Server</li>
-          <li>Performed server patching via SCCM, WSUS, and PowerShell scripting; reduced vulnerability count below 12%</li>
-          <li>Contributed to Ansible automation for provisioning, patching, and snapshot workflows</li>
-          <li>Created SOPs, KB articles, monthly capacity planning reports, and customer presentations</li>
-          <li>Served as Field Service Engineer for four major APAC sites</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item">
-        <div class="job-header">
-          <div class="job-title">Executive IT Support</div>
-          <div class="job-date">JAN 2020 – MAY 2022</div>
-        </div>
-        <div class="job-company">Inspace Technologies Pvt. Ltd. · Chennai, India</div>
-        <ul class="job-bullets">
-          <li>Installed, configured, and administered routers, switches, and SonicWall firewalls</li>
-          <li>Managed Windows, Windows Server, Linux, and macOS systems across the organization</li>
-          <li>Configured email clients including Outlook, Zimbra, and Google Workspace</li>
-          <li>Handled server, desktop, laptop, and email backups with disaster recovery procedures</li>
-          <li>Deployed BitLocker encryption for data protection; conducted antivirus management via McAfee ePO</li>
-          <li>Performed patch updates via WSUS and ManageEngine; managed asset audits via Desktop Central</li>
-          <li>Installed and maintained network cabling with UTP CAT5E and CAT6 standards</li>
-        </ul>
-      </div>
-
+      <div class="job-company">Inspace Technologies Pvt. Ltd. · Chennai, India</div>
+      <ul class="job-bullets">
+        <li>Installed, configured, and administered routers, switches, and SonicWall firewalls</li>
+        <li>Managed Windows, Windows Server, Linux, and macOS systems across the organization</li>
+        <li>Handled server, desktop, and email backups with disaster recovery procedures</li>
+        <li>Deployed BitLocker encryption for data protection; conducted antivirus management via McAfee ePO</li>
+        <li>Performed patch updates via WSUS and ManageEngine; managed asset audits via Desktop Central</li>
+        <li>Installed and maintained network cabling with UTP CAT5E and CAT6 standards</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="section-rule" style="max-width:1100px;"/>
+<hr class="section-rule" />
 
-  <!-- ACHIEVEMENTS -->
-  <section id="achievements">
-    <div class="section-label">// 04. ACHIEVEMENTS</div>
-    <h2 class="section-title">Key <span>Wins</span></h2>
-    <div class="achievements-grid">
-      <div class="achievement-card">
-        <div class="ach-icon">🏆</div>
-        <div class="ach-text">Received Certificate of Appreciation for reducing Windows Server vulnerability count to below 12% — a significant security milestone recognized across the organization.</div>
-      </div>
-      <div class="achievement-card">
-        <div class="ach-icon">🌏</div>
-        <div class="ach-text">Received appreciation award for managing and supporting four APAC sites as Field Service Engineer, ensuring seamless operations across regions.</div>
-      </div>
-      <div class="achievement-card">
-        <div class="ach-icon">⚡</div>
-        <div class="ach-text">Received appreciation award for extended support and contributions during the VCF Code Upgrade Activity — a high-criticality infrastructure project.</div>
-      </div>
-      <div class="achievement-card">
-        <div class="ach-icon">💰</div>
-        <div class="ach-text">Achieved a 15% reduction in hardware repair and replacement costs through proactive maintenance strategies and vendor coordination.</div>
-      </div>
-      <div class="achievement-card">
-        <div class="ach-icon">🔄</div>
-        <div class="ach-text">Automated backup processes using PowerShell and Ansible, significantly saving operational time and improving reliability across managed environments.</div>
-      </div>
-      <div class="achievement-card">
-        <div class="ach-icon">📈</div>
-        <div class="ach-text">Maintained continuous server monitoring ensuring high uptime across all managed environments, minimizing downtime and maximizing service availability.</div>
-      </div>
+<section id="achievements" class="reveal">
+  <div class="section-label">// 04. ACHIEVEMENTS</div>
+  <h2 class="section-title">Key <span>Wins</span></h2>
+  <div class="achievements-grid">
+    <div class="achievement-card"><div class="ach-icon">🏆</div><div class="ach-text">Received Certificate of Appreciation for reducing Windows Server vulnerability count to below 12% — a significant security milestone recognized across the organization.</div></div>
+    <div class="achievement-card"><div class="ach-icon">🌏</div><div class="ach-text">Received appreciation award for managing and supporting four APAC sites as Field Service Engineer, ensuring seamless operations across regions.</div></div>
+    <div class="achievement-card"><div class="ach-icon">⚡</div><div class="ach-text">Received appreciation award for extended support during the VCF Code Upgrade Activity — a high-criticality infrastructure project delivered successfully.</div></div>
+    <div class="achievement-card"><div class="ach-icon">💰</div><div class="ach-text">Achieved a 15% reduction in hardware repair and replacement costs through proactive maintenance strategies and vendor coordination.</div></div>
+    <div class="achievement-card"><div class="ach-icon">🔄</div><div class="ach-text">Automated backup processes using PowerShell and Ansible, significantly saving operational time and improving reliability across managed environments.</div></div>
+    <div class="achievement-card"><div class="ach-icon">📈</div><div class="ach-text">Maintained continuous server monitoring ensuring high uptime across all managed environments, minimizing downtime and maximizing service availability.</div></div>
+  </div>
+</section>
+
+<hr class="section-rule" />
+
+<section id="certifications" class="reveal">
+  <div class="section-label">// 05. CERTIFICATIONS</div>
+  <h2 class="section-title">Education & <span>Credentials</span></h2>
+  <div style="margin-bottom:2.5rem; background:rgba(15, 33, 57, 0.3); border:1px solid rgba(255,255,255,0.05); padding:1.5rem 2rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; align-items:center; border-radius:24px; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+    <div>
+      <div style="font-size:1.1rem;font-weight:700;color:var(--text);">Bachelor of Engineering – Electrical & Electronics Engineering</div>
+      <div style="font-size:0.9rem;color:var(--muted);margin-top:0.4rem;">K. Ramakrishnan College of Technology, Trichy, India</div>
     </div>
-  </section>
+    <div style="font-family:var(--mono);font-size:0.75rem;color:var(--accent);letter-spacing:2px;background:rgba(0,200,255,0.08);padding:0.4rem 1rem;border:1px solid rgba(0,200,255,0.2);border-radius:50px;white-space:nowrap;">2015 – 2019</div>
+  </div>
+  <div class="cert-list">
+    <div class="cert-item"><div class="cert-dot"></div>MCSA & MCSE – Course Completed</div>
+    <div class="cert-item"><div class="cert-dot"></div>AWS – Course Completed</div>
+    <div class="cert-item"><div class="cert-dot"></div>Cambridge English B1 (Council of Europe)</div>
+    <div class="cert-item"><div class="cert-dot"></div>Hardware & Networking – Course Completed</div>
+    <div class="cert-item"><div class="cert-dot"></div>IoT – Completed at IIT</div>
+    <div class="cert-item"><div class="cert-dot"></div>Ethical Hacking – Course Completed</div>
+    <div class="cert-item"><div class="cert-dot"></div>🏅 Appreciation – Vulnerability Reduction</div>
+    <div class="cert-item"><div class="cert-dot"></div>🏅 Appreciation – 4 APAC Sites Support</div>
+    <div class="cert-item"><div class="cert-dot"></div>🏅 Appreciation – VCF Code Upgrade</div>
+  </div>
+</section>
 
-  <hr class="section-rule" style="max-width:1100px;"/>
+<hr class="section-rule" />
 
-  <!-- CERTIFICATIONS -->
-  <section id="certifications">
-    <div class="section-label">// 05. CERTIFICATIONS</div>
-    <h2 class="section-title">Education &amp; <span>Credentials</span></h2>
+<section id="contact" class="reveal">
+  <div class="section-label">// 06. CONTACT</div>
+  <h2 class="section-title">Get In <span>Touch</span></h2>
+  
+  <div class="contact-message-container glass-panel">
+    <p>I'm open to discussing enterprise IT infrastructure projects, VMware/Azure consulting, automation initiatives, and technology leadership opportunities.</p>
+    <p>Whether you need expertise in Windows Server environments, cloud migrations, or building resilient hybrid infrastructure — feel free to reach out directly through any of the channels below.</p>
+    
+    <div class="contact-icon-row">
+      <a href="mailto:sglgokul@yahoo.com" class="icon-btn icon-email" aria-label="Send Email" title="Send Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      </a>
 
-    <div style="margin-bottom:2.5rem; background:var(--card); border:1px solid var(--border); padding:1.5rem 2rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; align-items:center;">
-      <div>
-        <div style="font-size:1.1rem; font-weight:700; color:var(--text);">Bachelor of Engineering – Electrical &amp; Electronics Engineering</div>
-        <div style="font-size:0.85rem; color:var(--muted); margin-top:0.3rem;">K. Ramakrishnan College of Technology, Trichy, India</div>
-      </div>
-      <div style="font-family:var(--mono); font-size:0.7rem; color:var(--accent); letter-spacing:2px; background:rgba(0,200,255,0.08); padding:0.3rem 0.8rem; border:1px solid rgba(0,200,255,0.2);">2015 – 2019</div>
+      <a href="tel:+917904304139" class="icon-btn icon-phone" aria-label="Call Me" title="Call Me">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 5.93 5.93l1.82-1.82a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+
+      <a href="https://maps.google.com/?q=Bengaluru,Karnataka,India" target="_blank" rel="noopener noreferrer" class="icon-btn icon-map" aria-label="View Location" title="View Location">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </a>
+
+      <a href="https://www.linkedin.com/in/sglgokul" target="_blank" rel="noopener noreferrer" class="icon-btn icon-linkedin" aria-label="LinkedIn Profile" title="LinkedIn Profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+
+      <a href="Gokul_S.docx" download class="icon-btn icon-resume" aria-label="Download Resume" title="Download Resume">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
     </div>
+  </div>
+</section>
 
-    <div class="cert-list">
-      <div class="cert-item"><div class="cert-dot"></div>MCSA &amp; MCSE – Course Completed</div>
-      <div class="cert-item"><div class="cert-dot"></div>AWS – Course Completed</div>
-      <div class="cert-item"><div class="cert-dot"></div>Cambridge English B1 (Council of Europe)</div>
-      <div class="cert-item"><div class="cert-dot"></div>Hardware &amp; Networking – Course Completed</div>
-      <div class="cert-item"><div class="cert-dot"></div>IoT – Completed at IIT</div>
-      <div class="cert-item"><div class="cert-dot"></div>Ethical Hacking – Course Completed</div>
-      <div class="cert-item"><div class="cert-dot"></div>🏅 Appreciation – Vulnerability Reduction</div>
-      <div class="cert-item"><div class="cert-dot"></div>🏅 Appreciation – 4 APAC Sites Support</div>
-      <div class="cert-item"><div class="cert-dot"></div>🏅 Appreciation – VCF Code Upgrade</div>
-    </div>
-  </section>
+<footer>
+  <div class="footer-links">
+    <a href="mailto:sglgokul@yahoo.com">Email</a>
+    <a href="https://www.linkedin.com/in/sglgokul" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="Gokul_S.docx" download>Resume</a>
+  </div>
+  <p>© 2026 GOKUL S · TECHNOLOGY LEAD · BENGALURU, INDIA</p>
+</footer>
 
-  <hr class="section-rule" style="max-width:1100px;"/>
+<script>
+/* HAMBURGER & MOBILE MENU */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  // Prevents background scrolling when mobile menu is open
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : 'auto';
+});
+function closeMobile() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = 'auto';
+}
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-label">// 06. CONTACT</div>
-    <h2 class="section-title">Get In <span>Touch</span></h2>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <a class="contact-item" href="mailto:sglgokul@yahoo.com">
-          <div class="contact-icon">✉️</div>
-          <div>
-            <div class="contact-label">EMAIL</div>
-            <div class="contact-value">sglgokul@yahoo.com</div>
-          </div>
-        </a>
-        <a class="contact-item" href="tel:+917904304139">
-          <div class="contact-icon">📞</div>
-          <div>
-            <div class="contact-label">PHONE</div>
-            <div class="contact-value">+91-7904304139</div>
-          </div>
-        </a>
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <div class="contact-label">LOCATION</div>
-            <div class="contact-value">Bengaluru, India</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">💼</div>
-          <div>
-            <div class="contact-label">COMPANY</div>
-            <div class="contact-value">Infosys Ltd.</div>
-          </div>
-        </div>
-      </div>
-      <div class="contact-message">
-        <p>I'm open to discussing enterprise IT infrastructure projects, VMware/Azure consulting, automation initiatives, and technology leadership opportunities.</p>
-        <p>Whether you need expertise in Windows Server environments, cloud migrations, or building resilient hybrid infrastructure — feel free to reach out.</p>
-        <a href="mailto:sglgokul@yahoo.com" class="btn-primary" style="display:inline-block;">Send a Message</a>
-      </div>
-    </div>
-  </section>
+/* SCROLL REVEAL (Intersection Observer for smooth fade/slide up) */
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealElements.forEach(el => revealObserver.observe(el));
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 GOKUL S · TECHNOLOGY LEAD · BENGALURU, INDIA</p>
-  </footer>
+/* PILL NAVBAR SCROLL EFFECT (Flow/Resize on scroll) */
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if(window.scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
 
+/* CANVAS PARTICLE ANIMATION */
+(function () {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, mouse = { x: -9999, y: -9999 };
+  const COUNT = window.innerWidth < 600 ? 40 : 80;
+  const CONNECT = 150;
+  const REPEL = 120;
+
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('touchmove', e => { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; }, { passive: true });
+  window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+  const COLORS = ['rgba(0,200,255,0.6)', 'rgba(0,255,157,0.5)', 'rgba(255,255,255,0.3)'];
+
+  class Particle {
+    constructor() { this.init(); }
+    init() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.r = Math.random() * 2 + 0.5;
+      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      this.pulse = Math.random() * Math.PI * 2;
+      this.pulseSpeed = 0.01 + Math.random() * 0.02;
+    }
+    update() {
+      this.pulse += this.pulseSpeed;
+      const dx = this.x - mouse.x, dy = this.y - mouse.y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < REPEL && d > 0) {
+        const f = (REPEL - d) / REPEL;
+        this.vx += (dx / d) * f * 0.3;
+        this.vy += (dy / d) * f * 0.3;
+      }
+      this.vx *= 0.98; this.vy *= 0.98;
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < -20) this.x = W + 20;
+      if (this.x > W + 20) this.x = -20;
+      if (this.y < -20) this.y = H + 20;
+      if (this.y > H + 20) this.y = -20;
+    }
+    draw() {
+      const a = 0.5 + 0.5 * Math.sin(this.pulse);
+      ctx.save();
+      ctx.globalAlpha = a;
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  const particles = Array.from({ length: COUNT }, () => new Particle());
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+
+    /* soft gradient background to simulate iOS depth */
+    const bgGlow = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W, H));
+    bgGlow.addColorStop(0, 'rgba(13, 27, 46, 0)');
+    bgGlow.addColorStop(1, 'rgba(7, 13, 26, 0.4)');
+    ctx.fillStyle = bgGlow;
+    ctx.fillRect(0, 0, W, H);
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < CONNECT) {
+          ctx.save();
+          ctx.globalAlpha = (1 - d / CONNECT) * 0.15;
+          ctx.strokeStyle = '#00c8ff';
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+    }
+
+    if (mouse.x > -100) {
+      const g = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 150);
+      g.addColorStop(0, 'rgba(0,200,255,0.08)');
+      g.addColorStop(1, 'rgba(0,200,255,0)');
+      ctx.save(); ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 150, 0, Math.PI * 2);
+      ctx.fill(); ctx.restore();
+    }
+
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
 </body>
 </html>
